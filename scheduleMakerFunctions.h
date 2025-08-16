@@ -23,13 +23,44 @@ struct Course{
 };
 
 
+// FUNCTIONS
+
+int menuSelection(){
+    int userChoice = 0;
+    do{
+        
+
+        printf("========SCHEDULE MAKER========\n");
+        printf("Program Options: \n");
+        printf("1| MAKE NEW schedule \n");
+        printf("2| ENTER a new class \n");
+        printf("3| REMOVE a class \n");
+        printf("4| EDIT a class \n");
+        printf("5| SHOW SCHEDULE\n");
+        printf("6| HELP \n");
+        printf("7| QUIT PROGRAM\n");
+        
+        printf("ENTER OPTION NUMBER: ");
+        scanf("%d", &userChoice);
+
+        if(userChoice <= 0 || userChoice >7){
+            printf("Invalid input, please enter 1 to 7 only\n\n");
+        }
+
+    }while(userChoice <= 0 || userChoice >7);
+
+    return userChoice;  // Return 1 to repeat, return 0 to end
+}
+
+
 void makeNewSchedule(){
     printf("ENTER NUMBER OF COURSES: ");
     scanf("%d", &scheduleSize);
     while(getchar() != '\n');
 
-    courseArray = calloc(scheduleSize, sizeof(struct Course)); // Allocate size based on user input
     // Switched to calloc()
+    courseArray = calloc(scheduleSize, sizeof(struct Course)); // Allocate size based on user input
+    
 
     // Get course input from user
     int i;
@@ -88,36 +119,9 @@ void makeNewSchedule(){
 
 }
 
-int menuSelection(){
-    int userChoice = 0;
 
-    printf("PROGRAM OPTIONS: \n");
-    printf("0| GUIDE FOR OPTIONS");
-    printf("1| MAKE NEW SCHEDULE \n");
-    printf("2| ENTER A NEW CLASS: \n");
-    printf("3| REMOVE A CLASS \n");
-    printf("4| EDIT A CLASS \n");
-    
-    printf("ENTER NUMBER OF OPTION: ");
-    scanf("%d", &userChoice);
 
-    int userConfirm = 'n';
-    switch(userChoice){
-        case 1:
-            do{
-                printf("WARNING!!!  Pre-existing schedule will be deleted. Do you still wish to process[y/n]: ");
-                userChoice = getchar();
-            }while(userConfirm != 'y');
-            break;
-        default: 
-            printf("Invalid Selection\n");
-            break;
-            
-    }
 
-    return 0; //Place Holder
-
-}
 
 void checkCurrentSchedule(){ // Currently To Check contents of dynamic array but eventually should print tabulated schedule
     int i;
