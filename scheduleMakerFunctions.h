@@ -10,10 +10,11 @@
 // Declare Pointer 
 struct Course *courseArray;
 
+int scheduleSize = 0;
 
 // STRUCTURES
 struct Course{
-    char subject[courseSize];
+    char course[courseSize];
     char section[sectionSize];
     char time[timeSize];
     char day1;
@@ -23,12 +24,12 @@ struct Course{
 
 
 void makeNewSchedule(){
-    int scheduleSize;
     printf("ENTER NUMBER OF COURSES: ");
     scanf("%d", &scheduleSize);
     while(getchar() != '\n');
 
-    courseArray = malloc(scheduleSize * sizeof(struct Course)); // Allocate size based on user input
+    courseArray = calloc(scheduleSize, sizeof(struct Course)); // Allocate size based on user input
+    // Switched to calloc()
 
     // Get course input from user
     int i;
@@ -37,7 +38,7 @@ void makeNewSchedule(){
 
         // Course Code
         printf("COURSE CODE: ");
-        fgets(tempCourse.subject, courseSize, stdin);
+        fgets(tempCourse.course, courseSize, stdin);
 
         // Section
         printf("SECTION: ");
@@ -116,7 +117,18 @@ int menuSelection(){
 
     return 0; //Place Holder
 
+}
 
-
+void checkCurrentSchedule(){ // Currently To Check contents of dynamic array but eventually should print tabulated schedule
+    int i;
+    for(i = 0; i<scheduleSize; i+=1){
+        printf("COURSE: %s\n", courseArray[i].course);
+        printf("SECTION: %s\n", courseArray[i].section);
+        printf("TIME: %s\n", courseArray[i].time);
+        printf("DAY1: %c\n", courseArray[i].day1);
+        printf("DAY2: %c\n", courseArray[i].day2);
+        printf("ROOM: %s\n", courseArray[i].room);
+    }
+    return;
 }
     

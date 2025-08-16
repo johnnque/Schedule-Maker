@@ -4,6 +4,8 @@
 int main(){
 
     makeNewSchedule();
+    checkCurrentSchedule();
+
 
     free(courseArray);
     courseArray = NULL;
