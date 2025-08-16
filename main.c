@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <scheduleMakerFunctions.h>
+
+#include "scheduleMakerFunctions.h"
 
 int main(){
 
+    makeNewSchedule();
 
-    
     free(courseArray);
     courseArray = NULL;
     return 0;
