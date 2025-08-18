@@ -31,7 +31,7 @@ int main(){
 
 
             case 2:
-                printf("Make new class function here\n");
+                addClass();
                 break;
             
             case 3:
@@ -43,7 +43,7 @@ int main(){
                 break;
 
             case 5:
-                printf("show schedule function here\n");
+                checkCurrentSchedule(); //Test function should be replaced with formatted schedule func.
                 break;
 
             case 6:
