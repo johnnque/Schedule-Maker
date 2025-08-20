@@ -44,6 +44,7 @@ void initializeProgram(){
     arrayH = NULL;
     arrayF = NULL;
     arrayS = NULL;
+    return;
 }
 
 int menuSelection(){
@@ -85,14 +86,17 @@ void addClass(){
         // Course Code
         printf("COURSE CODE: ");
         fgets(tempCourse.course, courseSize, stdin);
+        tempCourse.course[strlen(tempCourse.course) - 1] = '\0';
 
         // Section
         printf("SECTION: ");
         fgets(tempCourse.section, sectionSize, stdin);
+        tempCourse.section[strlen(tempCourse.section) - 1] = '\0';
 
         // Time
         printf("TIME [Enter 09:50 - 13:00]: ");
         fgets(tempCourse.time, timeSize, stdin);
+        tempCourse.time[strlen(tempCourse.time) - 1] = '\0';
 
         // Day 1 and Day 2
         int timesAWeek = 0;
@@ -127,6 +131,7 @@ void addClass(){
         // Room
         printf("ROOM: ");
         fgets(tempCourse.room, roomSize, stdin);
+        tempCourse.room[strlen(tempCourse.room) - 1] = '\0';
         
         
         // ADD THE COURSE INTO MEMORY
@@ -393,145 +398,265 @@ void sortTime(){
             }
         }
     }
+
+    return;
+}
+
+void printHorizontalLine(){
+    printf("=============================================================================================================\n");
+    return;
 }
 
 
-void displaySchedule(){ // Currently To Check contents of dynamic array but eventually should print tabulated schedule
-    /*
-    int i;
-    for(i = 0; i<scheduleSize; i+=1){
-        printf("COURSE: %s\n", courseArray[i].course);
-        printf("SECTION: %s\n", courseArray[i].section);
-        printf("TIME: %s\n", courseArray[i].time);
-        printf("DAY1: %c\n", courseArray[i].day1);
-        printf("DAY2: %c\n", courseArray[i].day2);
-        printf("ROOM: %s\n", courseArray[i].room);
-    }
-    */
+void displaySchedule(){
     
     sortTime();
-    printf("|%-17s|%-17s|%-17s|%-17s|%-17s|%-17s|\n", "MON", "TUE", "WED", "THU", "FRI", "SAT");
 
+    printf("|%-17s|%-17s|%-17s|%-17s|%-17s|%-17s|\n", "MON", "TUE", "WED", "THU", "FRI", "SAT");
+    printHorizontalLine();
 
     int i = 0;
     while(i<sizeM || i < sizeT || i < sizeW || i < sizeH || i < sizeF || i < sizeS){
 
         // SUBJECT PRINTING
-        if(arrayM != NULL){
-            if(strcmp(arrayM[i].course, "\0") == 0){
-                printf("|%-17s|", arrayM[i].course);
-            }
+        if(arrayM != NULL && arrayM[i].course != NULL){
+            printf("|%-17s|", arrayM[i].course);
+            
         }
         else{
-            printf("|%-17s|", " ");
+            printf("|%-17s|", "");
         }
 
-        if(arrayT != NULL){
-            if(strcmp(arrayT[i].course, "\0") == 0){
-                printf("%-17s|", arrayT[i].course);
-            }
+        if(arrayT != NULL && arrayT[i].course != NULL){
+            printf("%-17s|", arrayT[i].course);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayW != NULL){
-            if(strcmp(arrayW[i].course, "\0") == 0){
-                printf("%-17s|", arrayW[i].course);
-            }
+        if(arrayW != NULL && arrayW[i].course != NULL){
+            printf("%-17s|", arrayW[i].course);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayH != NULL){
-            if(strcmp(arrayH[i].course, "\0") == 0){
-                printf("%-17s|", arrayH[i].course);
-            }
+        if(arrayH != NULL && arrayH[i].course != NULL){
+            printf("%-17s|", arrayH[i].course);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayF != NULL){
-            if(strcmp(arrayF[i].course, "\0") == 0){
-                printf("%-17s|", arrayF[i].course);
-            }
+        if(arrayF != NULL && arrayF[i].course != NULL){
+            printf("%-17s|", arrayF[i].course);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayS != NULL){
-            if(strcmp(arrayS[i].course, "\0") == 0){
-                printf("%-17s|\n", arrayS[i].course);
-            }
+        if(arrayS != NULL && arrayS[i].course != NULL){
+            printf("%-17s|\n", arrayS[i].course);
         }
         else{
-            printf("%-17s|\n", " ");
+            printf("%-17s|\n", "");
         }
 
 
         // SECTION PRINTING
-                if(arrayM != NULL){
-            if(strcmp(arrayM[i].section, "\0") == 0){
-                printf("|%-17s|", arrayM[i].section);
-            }
+        if(arrayM != NULL && arrayM[i].section != NULL){
+            printf("|%-17s|", arrayM[i].section);
         }
         else{
-            printf("|%-17s|", " ");
+            printf("|%-17s|", "");
         }
 
-        if(arrayT != NULL){
-            if(strcmp(arrayT[i].section, "\0") == 0){
-                printf("%-17s|", arrayT[i].section);
-            }
+        if(arrayT != NULL && arrayT[i].section != NULL){
+            printf("%-17s|", arrayT[i].section);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayW != NULL){
-            if(strcmp(arrayW[i].section, "\0") == 0){
-                printf("%-17s|", arrayW[i].section);
-            }
+        if(arrayW != NULL && arrayW[i].section != NULL){
+            printf("%-17s|", arrayW[i].section);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayH != NULL){
-            if(strcmp(arrayH[i].section, "\0") == 0){
-                printf("%-17s|", arrayH[i].section);
-            }
+        if(arrayH != NULL && arrayH[i].section != NULL){
+            printf("%-17s|", arrayH[i].section);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayF != NULL){
-            if(strcmp(arrayF[i].section, "\0") == 0){
-                printf("%-17s|", arrayF[i].section);
-            }
+        if(arrayF != NULL && arrayF[i].section != NULL){
+            printf("%-17s|", arrayF[i].section);
         }
         else{
-            printf("%-17s|", " ");
+            printf("%-17s|", "");
         }
 
-        if(arrayS != NULL){
-            if(strcmp(arrayS[i].section, "\0") == 0){
-                printf("%-17s|\n", arrayS[i].section);
-            }
+        if(arrayS != NULL && arrayS[i].section != NULL){
+            printf("%-17s|\n", arrayS[i].section);
         }
         else{
-            printf("%-17s|\n", " ");
+            printf("%-17s|\n", "");
         }
+
+        // TIME PRINTING
+        if(arrayM != NULL && arrayM[i].time != NULL){
+            printf("|%-17s|", arrayM[i].time);
+        }
+        else{
+            printf("|%-17s|", "");
+        }
+
+        if(arrayT != NULL && arrayT[i].time != NULL){
+            printf("%-17s|", arrayT[i].time);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayW != NULL && arrayW[i].time != NULL){
+            printf("%-17s|", arrayW[i].time);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayH != NULL && arrayH[i].time != NULL){
+            printf("%-17s|", arrayH[i].time);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayF != NULL && arrayF[i].time != NULL){
+            printf("%-17s|", arrayF[i].time);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayS != NULL && arrayS[i].time != NULL){
+            printf("%-17s|\n", arrayS[i].time);
+        }
+        else{
+            printf("%-17s|\n", "");
+        }
+
+        // ROOM PRINTING
+        if(arrayM != NULL && arrayM[i].room != NULL){
+            printf("|%-17s|", arrayM[i].room);
+        }
+        else{
+            printf("|%-17s|", "");
+        }
+
+        if(arrayT != NULL && arrayT[i].room != NULL){
+            printf("%-17s|", arrayT[i].room);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayW != NULL && arrayW[i].room != NULL){
+            printf("%-17s|", arrayW[i].room);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayH != NULL && arrayH[i].room != NULL){
+            printf("%-17s|", arrayH[i].room);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayF != NULL && arrayF[i].room != NULL){
+            printf("%-17s|", arrayF[i].room);
+        }
+        else{
+            printf("%-17s|", "");
+        }
+
+        if(arrayS != NULL && arrayS[i].room != NULL){
+            printf("%-17s|\n", arrayS[i].room);
+        }
+        else{
+            printf("%-17s|\n", "");
+        }
+
+        printHorizontalLine();
 
         // Increment
         i = i + 1;
 
     }
 
+    return;
+}
+
+void printClassTestFunction(){
+    int i;
+    for(i = 0; i<sizeM; i+=1){
+        printf("COURSE: %s\n", arrayM[i].course);
+        printf("SECTION: %s\n", arrayM[i].section);
+        printf("TIME: %s\n", arrayM[i].time);
+        printf("DAY1: %c\n", arrayM[i].day1);
+        printf("DAY2: %c\n", arrayM[i].day2);
+        printf("ROOM: %s\n", arrayM[i].room);
+    }
+
+    for(i = 0; i<sizeT; i+=1){
+        printf("COURSE: %s\n", arrayT[i].course);
+        printf("SECTION: %s\n", arrayT[i].section);
+        printf("TIME: %s\n", arrayT[i].time);
+        printf("DAY1: %c\n", arrayT[i].day1);
+        printf("DAY2: %c\n", arrayT[i].day2);
+        printf("ROOM: %s\n", arrayT[i].room);
+    }
+
+    for(i = 0; i<sizeW; i+=1){
+        printf("COURSE: %s\n", arrayW[i].course);
+        printf("SECTION: %s\n", arrayW[i].section);
+        printf("TIME: %s\n", arrayW[i].time);
+        printf("DAY1: %c\n", arrayW[i].day1);
+        printf("DAY2: %c\n", arrayW[i].day2);
+        printf("ROOM: %s\n", arrayW[i].room);
+    }
+
+    for(i = 0; i<sizeH; i+=1){
+        printf("COURSE: %s\n", arrayH[i].course);
+        printf("SECTION: %s\n", arrayH[i].section);
+        printf("TIME: %s\n", arrayH[i].time);
+        printf("DAY1: %c\n", arrayH[i].day1);
+        printf("DAY2: %c\n", arrayH[i].day2);
+        printf("ROOM: %s\n", arrayH[i].room);
+    }
+
+    for(i = 0; i<sizeF; i+=1){
+        printf("COURSE: %s\n", arrayF[i].course);
+        printf("SECTION: %s\n", arrayF[i].section);
+        printf("TIME: %s\n", arrayF[i].time);
+        printf("DAY1: %c\n", arrayF[i].day1);
+        printf("DAY2: %c\n", arrayF[i].day2);
+        printf("ROOM: %s\n", arrayF[i].room);
+    }
+
+    for(i = 0; i<sizeS; i+=1){
+        printf("COURSE: %s\n", arrayS[i].course);
+        printf("SECTION: %s\n", arrayS[i].section);
+        printf("TIME: %s\n", arrayS[i].time);
+        printf("DAY1: %c\n", arrayS[i].day1);
+        printf("DAY2: %c\n", arrayS[i].day2);
+        printf("ROOM: %s\n", arrayS[i].room);
+    }
     return;
 }
     

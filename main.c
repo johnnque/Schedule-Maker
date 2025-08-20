@@ -25,7 +25,8 @@ int main(){
             break;
 
             case 4:
-                displaySchedule(); //Test function should be replaced with formatted schedule func.
+                displaySchedule(); 
+                //printClassTestFunction();
                 break;
 
             case 5:
@@ -37,7 +38,6 @@ int main(){
 
             default: 
                 printf("Invalid Selection\n");
-                userChoice = 0; //To ensure going back to menu
                 break; 
         }
     } while(userChoice != 6);
