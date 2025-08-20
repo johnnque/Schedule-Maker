@@ -25,7 +25,7 @@ int main(){
             break;
 
             case 4:
-                checkCurrentSchedule(); //Test function should be replaced with formatted schedule func.
+                displaySchedule(); //Test function should be replaced with formatted schedule func.
                 break;
 
             case 5:
