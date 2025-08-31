@@ -1,6 +1,7 @@
 
 #include "variablesAndStructures.h"
 
+// Helper Functions
 void clearBuffer(){
     int c;
     while((c = getchar()) != '\n' && c != EOF);
@@ -20,22 +21,52 @@ int conditionString(char* string){
     return 0; //FAILED: NO '\n'
 }
 
-
-void getCode(){
+// Getters
+void getCode(struct Course* course){
     char temp[9];
     int validSize;
     do{
-        clearBuffer();
-
         printf("COURSE CODE: ");
         fgets(temp, 9, stdin);
+        clearBuffer();
         validSize= conditionString(temp);
         if(validSize == 0){
             printf("\n[Error] Max Characters: 7\n");
         }
     }while(validSize == 0);
 
-    //TODO pass by ref to instance of struct
+    (*course).code = temp;
+    printf("%s", (*course).code);
     return;
 }
 
+
+void getSection(struct Course* course){
+    char temp[7];
+    int validSize;
+    do{
+        printf("SECTION: ");
+        fgets(temp, 7, stdin);               
+        clearBuffer();
+
+        validSize= conditionString(temp);
+        if(validSize == 0){
+            printf("\n[Error] Max Characters: 5\n");
+        }
+    }while(validSize == 0);
+
+    (*course).section = temp;
+    
+    return;
+}
+
+void addCourse(){
+    struct Course temp;
+    struct Course* pTemp = &temp;
+    getCode(pTemp);
+    getSection(pTemp);
+
+    printf("%s | %s", temp.code, temp.section); //FOR TESTING
+
+    return;
+}

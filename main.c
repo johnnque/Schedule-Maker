@@ -2,6 +2,19 @@
 
 
 int main(){
-    getCode(); // test getCode
+    addCourse();
+
+    free(arrayM);
+    free(arrayT);
+    free(arrayW);
+    free(arrayH);
+    free(arrayF);
+    free(arrayS);
+    arrayM = NULL;
+    arrayT = NULL;
+    arrayW = NULL;
+    arrayH = NULL;
+    arrayF = NULL;
+    arrayS = NULL;
     return 0;
 }
