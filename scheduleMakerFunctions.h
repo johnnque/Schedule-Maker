@@ -62,10 +62,11 @@ int menuSelection(){
         printf("6| QUIT PROGRAM\n");
         
         printf("ENTER OPTION NUMBER: ");
-        scanf("%d", &userChoice);
+        int errorStatus = scanf("%d", &userChoice);
 
-        if(userChoice <= 0 || userChoice >7){
+        if(userChoice <= 0 || userChoice >7 || errorStatus <=0){
             printf("Invalid input, please enter 1 to 7 only\n\n");
+            while(getchar() != '\n');
         }
 
     }while(userChoice <= 0 || userChoice >7);
